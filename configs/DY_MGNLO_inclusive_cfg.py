@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DY_MGNLO_inclusive_cff.py --fileout file:DY_MGNLO.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DY_MGNLO_inclusive_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 30 --no_exec
+# with command line options: Configuration/VGenStudies/python/DY_MGNLO_inclusive_cff.py --fileout file:DY_MGNLO_inclusive.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DY_MGNLO_inclusive_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 30 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -78,7 +78,7 @@ process.NANOAODGENoutput = cms.OutputModule("NanoAODOutputModule",
         dataTier = cms.untracked.string('NANOAOD'),
         filterName = cms.untracked.string('')
     ),
-    fileName = cms.untracked.string('file:DY_MGNLO.root'),
+    fileName = cms.untracked.string('file:DY_MGNLO_inclusive.root'),
     outputCommands = process.NANOAODGENEventContent.outputCommands
 )
 
@@ -167,7 +167,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('root://cms-xrd-global.cern.ch/eos/user/c/choij/GenValidation/dyellell0j_5f_NLO_slc7_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
+    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/GenValidation/dyellell0j_5f_NLO_slc7_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
     nEvents = cms.untracked.uint32(30),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
