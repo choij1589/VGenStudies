@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DYm50_cp5_GridToNano_cff.py --fileout file:DYm50_cp5_GridToNano_prune.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_cp5_GridToNano_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesNano -n 30 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_cp5_GridToNano_cff.py --fileout file:DYm50_cp5_GridToNano_prune.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_cp5_GridToNano_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesNano\nprocess.externalLHEProducer.generateConcurrently=True --nThreads 8 -n 30 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -190,6 +190,11 @@ process.NANOAODGENoutput_step = cms.EndPath(process.NANOAODGENoutput)
 process.schedule = cms.Schedule(process.lhe_step,process.generation_step,process.genfiltersummary_step,process.nanoAOD_step,process.endjob_step,process.NANOAODGENoutput_step)
 from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
+
+#Setup FWK for multithreaded
+process.options.numberOfThreads=cms.untracked.uint32(8)
+process.options.numberOfStreams=cms.untracked.uint32(0)
+process.options.numberOfConcurrentLuminosityBlocks=cms.untracked.uint32(1)
 # filter all path with the production filter sequence
 for path in process.paths:
 	if path in ['lhe_step']: continue
