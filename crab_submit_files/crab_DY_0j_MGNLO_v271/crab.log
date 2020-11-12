@@ -1,0 +1,21 @@
+DEBUG 2020-10-08 14:55:59.371 UTC: 	 CRAB Client version: v3.200812
+DEBUG 2020-10-08 14:55:59.372 UTC: 	 Running on: Linux lxplus742.cern.ch 3.10.0-1127.18.2.el7.x86_64 #1 SMP Sun Jul 26 15:27:06 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux - CentOS Linux 7 (Core)
+DEBUG 2020-10-08 14:55:59.372 UTC: 	 Executing command: 'status'
+DEBUG 2020-10-08 14:55:59.372 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/choij/.crab3
+ERROR 2020-10-08 14:55:59.373 UTC: 	 Cannot find .requestcache file in CRAB project directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DY_0j_MGNLO_v271/crab_projects
+ERROR 2020-10-08 14:55:59.373 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/bin/crab", line 165, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/bin/crab", line 150, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/lib/CRABClient/Commands/status.py", line 41, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/lib/CRABClient/Commands/SubCommand.py", line 270, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/lib/CRABClient/Commands/SubCommand.py", line 627, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.200812.00/lib/CRABClient/Commands/SubCommand.py", line 489, in loadLocalCache
+    raise ex
+CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DY_0j_MGNLO_v271/crab_projects
+INFO 2020-10-08 14:55:59.381 UTC: 	 Log file is /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DY_0j_MGNLO_v271/crab.log
