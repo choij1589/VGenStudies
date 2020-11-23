@@ -13,7 +13,7 @@ fi
 
 fragment=${1/python\//}
 
-cmsDriver.py Configuration/WMassNanoGen/python/$fragment \
+cmsDriver.py Configuration/VGenStudies/python/$fragment \
     --fileout file:$2 --mc --eventcontent NANOAODSIM \
     --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN \
     --python_filename configs/${fragment/cff/cfg} \
