@@ -1,0 +1,140 @@
+DEBUG 2020-11-26 07:33:23.931 UTC: 	 CRAB Client version: v3.201110
+DEBUG 2020-11-26 07:33:23.931 UTC: 	 Running on: Linux lxplus736.cern.ch 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux - CentOS Linux 7 (Core)
+DEBUG 2020-11-26 07:33:23.931 UTC: 	 Executing command: 'submit'
+DEBUG 2020-11-26 07:33:23.931 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/choij/.crab3
+INFO 2020-11-26 07:33:23.934 UTC: 	 Will use CRAB configuration file crab_submit_DYm50_012j_nlo_cuep5m1.py
+DEBUG 2020-11-26 07:33:23.934 UTC: 	 Loading CRAB configuration file.
+DEBUG 2020-11-26 07:33:23.958 UTC: 	 Will use CRAB PrivateMC plugin (i.e. will run a MC generation job type).
+DEBUG 2020-11-26 07:33:24.075 UTC: 	 Checking credentials
+DEBUG 2020-11-26 07:33:24.075 UTC: 	 Found proxy file /afs/cern.ch/user/c/choij/private/proxy/myproxy
+DEBUG 2020-11-26 07:33:24.075 UTC: 	 Getting proxy life time left
+DEBUG 2020-11-26 07:33:26.734 UTC: 	 Executing : 
+ command : voms-proxy-info -file /afs/cern.ch/user/c/choij/private/proxy/myproxy -timeleft
+ output : 602003
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:28.365 UTC: 	 Executing : 
+ command : voms-proxy-info -file /afs/cern.ch/user/c/choij/private/proxy/myproxy -actimeleft
+ output : 602001
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:28.365 UTC: 	 Proxy lifetime 602003 secs is different from voms extension lifetime 602001 secs for proxy: /afs/cern.ch/user/c/choij/private/proxy/myproxy
+DEBUG 2020-11-26 07:33:28.365 UTC: 	 Proxy valid for 167:13:21 hours
+DEBUG 2020-11-26 07:33:29.795 UTC: 	 Executing : 
+ command : env X509_USER_PROXY=/afs/cern.ch/user/c/choij/private/proxy/myproxy voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:29.898 UTC: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+DEBUG 2020-11-26 07:33:31.117 UTC: 	 Executing : 
+ command : voms-proxy-info -file /afs/cern.ch/user/c/choij/private/proxy/myproxy -identity
+ output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=choij/CN=841389/CN=Jin Choi
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:31.256 UTC: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2020-11-26 07:33:31.256 UTC: 	 using 62145c27448958522230f1583fedca774537a25d as credential login name
+DEBUG 2020-11-26 07:33:32.079 UTC: 	 Executing : 
+ command : myproxy-info -l 62145c27448958522230f1583fedca774537a25d -s myproxy.cern.ch
+ output : username: 62145c27448958522230f1583fedca774537a25d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=choij/CN=841389/CN=Jin Choi
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 502:17:33  (20.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:32.080 UTC: 	 Myproxy is valid: 1808253
+DEBUG 2020-11-26 07:33:32.080 UTC: 	 Retrieving username ...
+DEBUG 2020-11-26 07:33:32.080 UTC: 	 Retrieving username from CRIC...
+DEBUG 2020-11-26 07:33:33.226 UTC: 	 username is choij
+DEBUG 2020-11-26 07:33:33.340 UTC: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2020-11-26 07:33:33.340 UTC: 	 using choij_CRAB as credential login name
+DEBUG 2020-11-26 07:33:33.653 UTC: 	 Executing : 
+ command : myproxy-info -l choij_CRAB -s myproxy.cern.ch
+ output : username: choij_CRAB
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=choij/CN=841389/CN=Jin Choi
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms0105.cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod|dev)-tw(02|01).cern.ch|/DC=ch/DC=cern/OU=computers/CN=(ddi|ddidk|mytw).cern.ch|/DC=ch/DC=cern/OU=computers/CN=stefanov(m|m2).cern.ch
+  timeleft: 719:14:04  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2020-11-26 07:33:33.653 UTC: 	 Myproxy is valid: 2589244
+DEBUG 2020-11-26 07:33:33.653 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 62145c27448958522230f1583fedca774537a25d  - validity: 20 days, 22:17:33
+  Credential exists on myproxy: username: choij_CRAB  - validity: 29 days, 23:14:04
+DEBUG 2020-11-26 07:33:33.653 UTC: 	 Command use: submit
+DEBUG 2020-11-26 07:33:33.653 UTC: 	 Options use: ['crab_submit_DYm50_012j_nlo_cuep5m1.py']
+DEBUG 2020-11-26 07:33:33.747 UTC: 	 CRABClient version: v3.201110
+DEBUG 2020-11-26 07:33:33.747 UTC: 	 Instance is prod
+DEBUG 2020-11-26 07:33:33.748 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2020-11-26 07:33:33.748 UTC: 	 Command url /crabserver/prod/workflow
+DEBUG 2020-11-26 07:33:33.748 UTC: 	 Started submission
+DEBUG 2020-11-26 07:33:33.748 UTC: 	 Working on /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1
+DEBUG 2020-11-26 07:33:34.090 UTC: 	 Loading required information from the environment
+DEBUG 2020-11-26 07:33:34.091 UTC: 	 Found CMSSW_11_2_0_pre7 for slc7_amd64_gcc820 with base /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7
+DEBUG 2020-11-26 07:33:34.091 UTC: 	 UNIQUE NAME: tarUUID 8fecac69-4057-43f2-b804-116434188572 
+DEBUG 2020-11-26 07:33:34.091 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.transferOutputs = True
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'DYm50_012j_nlo_cuep5m1'
+config.section_('JobType')
+config.JobType.psetName = '../../configs/DYm50_012j_nlo_cuep5m1_cfg.py'
+config.JobType.pluginName = 'PrivateMC'
+config.JobType.allowUndistributedCMSSW = True
+config.section_('Data')
+config.Data.outputDatasetTag = 'RunIISummer15wmLHEGS'
+config.Data.publication = True
+config.Data.unitsPerJob = 3000
+config.Data.splitting = 'EventBased'
+config.Data.outLFNDirBase = '/store/user/choij/'
+config.Data.outputPrimaryDataset = 'DYm50_012j_nlo_cuep5m1'
+config.Data.totalUnits = 6000000
+config.section_('Site')
+config.Site.storageSite = 'T2_KR_KNU'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2020-11-26 07:33:34.091 UTC: 	 self.config.JobType.psetName: ../../configs/DYm50_012j_nlo_cuep5m1_cfg.py
+INFO 2020-11-26 07:33:34.104 UTC: 	 Importing CMSSW configuration ../../configs/DYm50_012j_nlo_cuep5m1_cfg.py
+INFO 2020-11-26 07:33:43.612 UTC: 	 Finished importing CMSSW configuration ../../configs/DYm50_012j_nlo_cuep5m1_cfg.py
+DEBUG 2020-11-26 07:33:43.612 UTC: 	 Writing CMSSW configuration to /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/inputs/PSet.py
+DEBUG 2020-11-26 07:33:44.555 UTC: 	 The following EDM output files will be collected: ['DYm50_012j_nlo_cuep5m1.root']
+DEBUG 2020-11-26 07:33:44.556 UTC: 	 The following TFile output files will be collected: []
+DEBUG 2020-11-26 07:33:44.556 UTC: 	 The following user output files (not listed as PoolOuputModule or TFileService in the CMSSW PSet) will be collected: 
+DEBUG 2020-11-26 07:33:44.556 UTC: 	 Loading required information from the environment
+DEBUG 2020-11-26 07:33:44.556 UTC: 	 Found CMSSW_11_2_0_pre7 for slc7_amd64_gcc820 with base /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7
+DEBUG 2020-11-26 07:33:44.556 UTC: 	 Making tarball in /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/inputs/8fecac69-4057-43f2-b804-116434188572default.tgz
+DEBUG 2020-11-26 07:33:44.559 UTC: 	 Checking directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/lib
+DEBUG 2020-11-26 07:33:44.559 UTC: 	 Adding directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/lib to tarball
+DEBUG 2020-11-26 07:33:46.193 UTC: 	 Checking directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/biglib
+DEBUG 2020-11-26 07:33:46.193 UTC: 	 Adding directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/biglib to tarball
+DEBUG 2020-11-26 07:33:52.427 UTC: 	 Checking directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/module
+DEBUG 2020-11-26 07:33:56.766 UTC: 	 Adding data directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/Generator/data to tarball
+DEBUG 2020-11-26 07:33:57.253 UTC: 	 Adding data directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/PyReleaseValidation/data to tarball
+DEBUG 2020-11-26 07:35:13.987 UTC: 	 Adding data directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/PhysicsTools/NanoAOD/interface to tarball
+DEBUG 2020-11-26 07:35:14.059 UTC: 	 Adding data directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Validation/HGCalValidation/data to tarball
+DEBUG 2020-11-26 07:35:14.094 UTC: 	 Adding data directory /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Validation/HGCalValidation/interface to tarball
+DEBUG 2020-11-26 07:35:14.869 UTC: 	 Uploading archive /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/inputs/8fecac69-4057-43f2-b804-116434188572default.tgz (13 MB) to the CRAB cache. Using URI https://cmsweb-k8s-prod.cern.ch/crabcache
+DEBUG 2020-11-26 07:35:27.147 UTC: 	 Loading required information from the environment
+DEBUG 2020-11-26 07:35:27.148 UTC: 	 Found CMSSW_11_2_0_pre7 for slc7_amd64_gcc820 with base /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7
+DEBUG 2020-11-26 07:35:27.148 UTC: 	 Making tarball in /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/inputs/debugFiles.tgz
+DEBUG 2020-11-26 07:35:27.181 UTC: 	 Uploading archive /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/inputs/debugFiles.tgz (2 KB) to the CRAB cache. Using URI https://cmsweb-k8s-prod.cern.ch/crabcache
+DEBUG 2020-11-26 07:35:27.465 UTC: 	 Result uploading input files: 89581f1ae9476d492d705d1d9e4eb88c77a2ab168e98b9b553b1a28e6c31d209.tar.gz 
+INFO 2020-11-26 07:35:27.466 UTC: 	 Sending the request to the server at cmsweb.cern.ch
+DEBUG 2020-11-26 07:35:27.466 UTC: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T2_KR_KNU', 'algoargs': 3000, 'cachefilename': '89581f1ae9476d492d705d1d9e4eb88c77a2ab168e98b9b553b1a28e6c31d209.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_11_2_0_pre7', 'edmoutfiles': ['DYm50_012j_nlo_cuep5m1.root'], 'userfiles': [], 'primarydataset': 'DYm50_012j_nlo_cuep5m1', 'inputdata': '', 'lfn': '/store/user/choij/', 'dryrun': 0, 'workflow': 'crab_DYm50_012j_nlo_cuep5m1', 'cacheurl': u'https://cmsweb-k8s-prod.cern.ch/crabcache', 'nonprodsw': 1, 'tfileoutfiles': [], 'oneEventMode': 0, 'debugfilename': '96599dec65df72c9dbff13a2adf9cacfab1be38f1b4e83bf724c381571ec03b2.tar.gz', 'saveoutput': 1, 'publication': 1, 'jobarch': 'slc7_amd64_gcc820', 'totalunits': 6000000, 'splitalgo': 'EventBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 0, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'PrivateMC', 'publishname2': 'RunIISummer15wmLHEGS'} 
+DEBUG 2020-11-26 07:35:27.466 UTC: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T2_KR_KNU&algoargs=3000&cachefilename=89581f1ae9476d492d705d1d9e4eb88c77a2ab168e98b9b553b1a28e6c31d209.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_11_2_0_pre7&primarydataset=DYm50_012j_nlo_cuep5m1&inputdata=&lfn=%2Fstore%2Fuser%2Fchoij%2F&dryrun=0&workflow=crab_DYm50_012j_nlo_cuep5m1&cacheurl=https%3A%2F%2Fcmsweb-k8s-prod.cern.ch%2Fcrabcache&nonprodsw=1&oneEventMode=0&debugfilename=96599dec65df72c9dbff13a2adf9cacfab1be38f1b4e83bf724c381571ec03b2.tar.gz&saveoutput=1&publication=1&jobarch=slc7_amd64_gcc820&totalunits=6000000&splitalgo=EventBased&ignoreglobalblacklist=0&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=PrivateMC&publishname2=RunIISummer15wmLHEGS&edmoutfiles=DYm50_012j_nlo_cuep5m1.root
+DEBUG 2020-11-26 07:35:27.576 UTC: 	 Result: {u'result': [{u'RequestName': u'201126_073527:choij_crab_DYm50_012j_nlo_cuep5m1'}]}
+INFO 2020-11-26 07:35:27.597 UTC: 	 Success: Your task has been delivered to the prod CRAB3 server.
+INFO 2020-11-26 07:35:27.597 UTC: 	 Task name: 201126_073527:choij_crab_DYm50_012j_nlo_cuep5m1
+INFO 2020-11-26 07:35:27.597 UTC: 	 Project dir: crab_projects/crab_DYm50_012j_nlo_cuep5m1
+INFO 2020-11-26 07:35:27.597 UTC: 	 Please use ' crab status -d crab_projects/crab_DYm50_012j_nlo_cuep5m1 ' to check how the submission process proceeds.
+DEBUG 2020-11-26 07:35:27.598 UTC: 	 About to return
+INFO 2020-11-26 07:35:27.651 UTC: 	 Log file is /eos/home-c/choij/GenValidation/CMSSW_11_2_0_pre7/src/Configuration/VGenStudies/crab_submit_files/crab_DYm50_012j_nlo_cuep5m1/crab_projects/crab_DYm50_012j_nlo_cuep5m1/crab.log
