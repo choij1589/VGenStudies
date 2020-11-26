@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py --fileout file:test.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 30 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_0j_nlo_ewparams_cp5_cff.py --fileout file:DYm50_0j_nlo_ewparams_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_0j_nlo_ewparams_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 30 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -25,43 +25,19 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(30),
-    output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
+    input = cms.untracked.int32(30)
 )
 
 # Input source
 process.source = cms.Source("EmptySource")
 
 process.options = cms.untracked.PSet(
-    FailPath = cms.untracked.vstring(),
-    IgnoreCompletely = cms.untracked.vstring(),
-    Rethrow = cms.untracked.vstring(),
-    SkipEvent = cms.untracked.vstring(),
-    allowUnscheduled = cms.obsolete.untracked.bool,
-    canDeleteEarly = cms.untracked.vstring(),
-    emptyRunLumiMode = cms.obsolete.untracked.string,
-    eventSetup = cms.untracked.PSet(
-        forceNumberOfConcurrentIOVs = cms.untracked.PSet(
 
-        ),
-        numberOfConcurrentIOVs = cms.untracked.uint32(1)
-    ),
-    fileMode = cms.untracked.string('FULLMERGE'),
-    forceEventSetupCacheClearOnNewRun = cms.untracked.bool(False),
-    makeTriggerResults = cms.obsolete.untracked.bool,
-    numberOfConcurrentLuminosityBlocks = cms.untracked.uint32(1),
-    numberOfConcurrentRuns = cms.untracked.uint32(1),
-    numberOfStreams = cms.untracked.uint32(0),
-    numberOfThreads = cms.untracked.uint32(1),
-    printDependencies = cms.untracked.bool(False),
-    sizeOfStackForThreadsInKB = cms.optional.untracked.uint32,
-    throwIfIllegalParameter = cms.untracked.bool(True),
-    wantSummary = cms.untracked.bool(False)
 )
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/VGenStudies/python/Hadronizer_TuneCUETP8M1_13TeV_aMCatNLO_FXFX_5f_max2j_LHE_pythia8_cff.py nevts:30'),
+    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_0j_nlo_ewparams_cp5_cff.py nevts:30'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -78,7 +54,7 @@ process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
         dataTier = cms.untracked.string('NANOAOD'),
         filterName = cms.untracked.string('')
     ),
-    fileName = cms.untracked.string('file:test.root'),
+    fileName = cms.untracked.string('file:DYm50_0j_nlo_ewparams_cp5.root'),
     outputCommands = process.NANOAODSIMEventContent.outputCommands
 )
 
@@ -93,7 +69,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
     PythiaParameters = cms.PSet(
         parameterSets = cms.vstring(
             'pythia8CommonSettings', 
-            'pythia8CUEP8M1Settings', 
+            'pythia8CP5Settings', 
             'pythia8aMCatNLOSettings', 
             'processParameters'
         ),
@@ -109,15 +85,30 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:doFxFx = on', 
             'JetMatching:qCutME = 10.', 
             'JetMatching:nQmatch = 5', 
-            'JetMatching:nJetMax = 2', 
-            'TimeShower:mMaxGamma = 4.0'
+            'JetMatching:nJetMax = 2'
         ),
-        pythia8CUEP8M1Settings = cms.vstring(
+        pythia8CP5Settings = cms.vstring(
             'Tune:pp 14', 
             'Tune:ee 7', 
-            'MultipartonInteractions:pT0Ref=2.4024', 
-            'MultipartonInteractions:ecmPow=0.25208', 
-            'MultipartonInteractions:expPow=1.6'
+            'MultipartonInteractions:ecmPow=0.03344', 
+            'MultipartonInteractions:bProfile=2', 
+            'MultipartonInteractions:pT0Ref=1.41', 
+            'MultipartonInteractions:coreRadius=0.7634', 
+            'MultipartonInteractions:coreFraction=0.63', 
+            'ColourReconnection:range=5.176', 
+            'SigmaTotal:zeroAXB=off', 
+            'SpaceShower:alphaSorder=2', 
+            'SpaceShower:alphaSvalue=0.118', 
+            'SigmaProcess:alphaSvalue=0.118', 
+            'SigmaProcess:alphaSorder=2', 
+            'MultipartonInteractions:alphaSvalue=0.118', 
+            'MultipartonInteractions:alphaSorder=2', 
+            'TimeShower:alphaSorder=2', 
+            'TimeShower:alphaSvalue=0.118', 
+            'SigmaTotal:mode = 0', 
+            'SigmaTotal:sigmaEl = 21.89', 
+            'SigmaTotal:sigmaTot = 100.309', 
+            'PDF:pSet=LHAPDF6:NNPDF31_nnlo_as_0118'
         ),
         pythia8CommonSettings = cms.vstring(
             'Tune:preferLHAPDF = 2', 
@@ -154,11 +145,11 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc481/13TeV/madgraph/V5_2.2.2/dyellell012j_5f_NLO_FXFX/v1/dyellell012j_5f_NLO_FXFX_tarball.tar.xz'),
+    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/GenValidation/gridpacks/ewparams/dyellell0j_5f_NLO_FXFX_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
     nEvents = cms.untracked.uint32(30),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
-    scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
+    scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh')
 )
 
 
@@ -188,7 +179,6 @@ from PhysicsTools.NanoAOD.nanogen_cff import customizeNanoGEN
 process = customizeNanoGEN(process)
 
 # End of customisation functions
-
 
 # Customisation from command line
 
