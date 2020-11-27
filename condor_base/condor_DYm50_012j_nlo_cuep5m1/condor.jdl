@@ -1,0 +1,17 @@
+Universe             = vanilla
+Executable           = run.sh
+GetEnv               = false
+
+WhenToTransferOutput = On_Exit_Or_Evict
+ShouldTransferFiles  = yes 
+want_graceful_removal = True
+request_memory       = 2000
+request_disk         = 2048000
+
++JobFlavour = "workday"
+arguments             = DYm50_012j_nlo_cuep5m1 $(Process)
+output                = output/job_$(Process).out
+error                 = error/job_$(Process).err
+log                   = log/job_$(Process).log
+
+queue 5
