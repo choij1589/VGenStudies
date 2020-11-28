@@ -1,1 +1,5 @@
 *.pyc
+*.root
+*.log
+*.out
+*.err
