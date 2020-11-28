@@ -24,8 +24,13 @@ print("=================================================")
 # currently checked for lxplus and tamsa
 if "tamsa" in os.environ['HOSTNAME']:
 	host = "tamsa"
-if "lxplus" in os.environ['HOSTNAME']:
+elif "lxplus" in os.environ['HOSTNAME']:
 	host = "lxplus"
+elif "knu" in os.environ['HOSTNAME']:
+	host = "knu"
+else:
+	print("ERORR: Host", os.environ['HOSTNAME'], "is not set yet")
+	raise(NameError)
 
 pwd = os.environ['PWD']
 condor_base = pwd + "/condor_base"

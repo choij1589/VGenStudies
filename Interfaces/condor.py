@@ -14,7 +14,7 @@ def make_config_dir(base_path, config):
 	return path
 
 def make_run_script(path, output_path, host):
-	if host == "tamsa":
+	if host == "tamsa" or "knu":
 		run_script = """#!/bin/sh
 cd """ +  path + """
 config=${1}
@@ -57,7 +57,7 @@ mv ${config}.root """ + output_path + """/${config}_${process}.root"""
 	f.close()
 
 def make_condor_jdl(path, host, config, njobs):
-	if host == "tamsa":
+	if host == "tamsa" or "knu":
 		condor_jdl = f"""Universe             = vanilla
 Executable           = run.sh
 GetEnv               = false
