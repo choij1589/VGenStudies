@@ -3,6 +3,9 @@ import os
 def make_config_dir(base_path, config):
 	path = base_path + "/condor_" + config
 	print("INFO: Jobs will be run in", path)
+	print("WARNING: Base directory will be overwritten")
+	if os.path.isdir(path):
+		os.system("rm -rf " + path)
 	os.mkdir(path)
 	os.mkdir(path + "/error")
 	os.mkdir(path + "/log")
@@ -28,7 +31,7 @@ cmsRun ${config}_cfg.py
 mv ${config}.root """ + output_path + """/${config}_${process}.root"""
 	
 	elif host == "lxplus":
-		run_script = """$!/bin/sh
+		run_script = """#!/bin/sh
 cd """ + path + """
 config=${1}
 process=${2}
@@ -65,6 +68,9 @@ want_graceful_removal = True
 request_memory       = 2000
 request_disk         = 2048000
 
+# stop jobs from running if they blow up in size or memory
+periodic_hold        = (DiskUsage/1024 > 10.0*2000 ||  ImageSize/1024 > RequestMemory*2)
+
 +JobFlavour = "workday"
 arguments             = {config} $(Process)
 output                = output/job_$(Process).out
@@ -81,7 +87,12 @@ GetEnv               = false
 WhenToTransferOutput = On_Exit_Or_Evict
 ShouldTransferFiles  = yes 
 want_graceful_removal = True
+request_memory       = 2000
+request_disk         = 2048000
 use_x509userproxy = True
+
+# stop jobs from running if they blow up in size or memory
+periodic_hold        = (DiskUsage/1024 > 10.0*2000 ||  ImageSize/1024 > RequestMemory*2)
 
 +JobFlavour = "workday"
 rguments             = {config} $(Process)

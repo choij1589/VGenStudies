@@ -12,10 +12,13 @@ parser.add_argument("--output_path", "-o", type=str, required=True, help="Output
 args = parser.parse_args()
 config = args.config
 njobs = args.njobs
-output_path = args.output_path
-print("INFO: Using comfig:", config)
-print("INFO: Required jobs:", njobs)
+output_path = args.output_path + "/" + config
+
+print("=================================================")
+print("INFO: Config:", config)
+print("INFO: Reqested jobs:", njobs)
 print("INFO: Output will be stored at", output_path)
+print("=================================================")
 
 # Hostname
 # currently checked for lxplus and tamsa
@@ -31,5 +34,12 @@ path = interface.make_config_dir(condor_base, config)
 interface.make_run_script(path, output_path, host)
 interface.make_condor_jdl(path, host, config, njobs)
 os.system("cp configs/" + config + "_cfg.py " + path)
+
+# check output directory
+print("WARNING: Output directory will be overwritten")
+if os.path.isdir(output_path):
+	os.system("rm -rf " + output_path)
+os.mkdir(output_path)
+
 os.chdir(path)
 os.system("condor_submit condor.jdl")
