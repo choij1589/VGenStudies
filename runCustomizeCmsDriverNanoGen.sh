@@ -6,7 +6,7 @@ if [[ $# -lt 2 ]]; then
     exit 1
 fi
 
-customize="--customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesNano"
+customize="--customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini PhysicsTools/PatAlgos/python/slimming/genParticles_cff"
 if [[ $# -gt 2 ]]; then
     customize="${customize}\nprocess.externalLHEProducer.generateConcurrently=True --nThreads $3"
 fi
