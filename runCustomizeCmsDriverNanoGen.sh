@@ -6,9 +6,11 @@ if [[ $# -lt 2 ]]; then
     exit 1
 fi
 
-customize="--customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini PhysicsTools/PatAlgos/python/slimming/genParticles_cff"
+customize="--customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999"
+#customize="--customise PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini"
 if [[ $# -gt 2 ]]; then
-    customize="${customize}\nprocess.externalLHEProducer.generateConcurrently=True --nThreads $3"
+    #customize="${customize}\nprocess.externalLHEProducer.generateConcurrently=True --nThreads $3"
+	customize="${customize} --nThreads $3"
 fi
 
 fragment=${1/python\//}
@@ -18,4 +20,5 @@ cmsDriver.py Configuration/VGenStudies/python/$fragment \
     --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN \
     --python_filename configs/${fragment/cff/cfg} \
     $customize \
-    -n 30 --no_exec
+	--customise PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini \
+    -n 100 --no_exec

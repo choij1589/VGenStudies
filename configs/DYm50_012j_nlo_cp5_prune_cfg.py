@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_cp5_prune_cff.py --fileout file:DYm50_012j_nlo_cp5_prune.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_cp5_prune_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini PhysicsTools/PatAlgos/python/slimming/genParticles_cff -n 30 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_cp5_prune_cff.py --fileout file:DYm50_012j_nlo_cp5_prune.root --mc --eventcontent NANOAODGEN --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_cp5_prune_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 --customise PhysicsTools/NanoAOD/nanogen_cff.pruneGenParticlesMini -n 100 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -25,7 +25,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(30),
+    input = cms.untracked.int32(100),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
@@ -61,7 +61,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_cp5_prune_cff.py nevts:30'),
+    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_cp5_prune_cff.py nevts:100'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -171,7 +171,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('/cvmfs/cms.cern.ch/phys_generator/gridpacks/2017/13TeV/madgraph/V5_2.4.2/dyellell012j_5f_NLO_FXFX/v1/dyellell012j_5f_NLO_FXFX_slc6_amd64_gcc481_CMSSW_7_1_30_tarball.tar.xz'),
-    nEvents = cms.untracked.uint32(30),
+    nEvents = cms.untracked.uint32(100),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
@@ -198,10 +198,13 @@ for path in process.paths:
 # customisation of the process.
 
 # Automatic addition of the customisation function from PhysicsTools.NanoAOD.nanogen_cff
-from PhysicsTools.NanoAOD.nanogen_cff import customizeNanoGEN 
+from PhysicsTools.NanoAOD.nanogen_cff import customizeNanoGEN,pruneGenParticlesMini 
 
 #call to customisation function customizeNanoGEN imported from PhysicsTools.NanoAOD.nanogen_cff
 process = customizeNanoGEN(process)
+
+#call to customisation function pruneGenParticlesMini imported from PhysicsTools.NanoAOD.nanogen_cff
+process = pruneGenParticlesMini(process)
 
 # End of customisation functions
 

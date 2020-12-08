@@ -9,7 +9,7 @@ fi
 das_name=$1
 outfile=$2
 config_name=${2/.root/_cfg.py}
-nevents=1000
+nevents=5000
 if [[ $# -gt 2 ]]; then
     config_name=$3
 fi
