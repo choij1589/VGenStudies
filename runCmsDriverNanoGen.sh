@@ -8,7 +8,8 @@ fi
 
 customize="--customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999"
 if [[ $# -gt 2 ]]; then
-    customize="${customize}\nprocess.externalLHEProducer.generateConcurrently=True --nThreads $3"
+    #customize="${customize}\nprocess.externalLHEProducer.generateConcurrently=True --nThreads $3"
+	customize="${customize} --nThreads $3"
 fi
 
 fragment=${1/python\//}
