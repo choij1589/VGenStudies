@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_ewparams_cp5_cff.py --fileout file:DYm50_012j_nlo_ewparams_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_ewparams_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 20000 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_1j_nlo_mg273_ewfix_cp5_cff.py --fileout file:DYm50_1j_nlo_mg273_ewfix_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_1j_nlo_mg273_ewfix_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 20000 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -62,7 +62,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_ewparams_cp5_cff.py nevts:20000'),
+    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_1j_nlo_mg273_ewfix_cp5_cff.py nevts:20000'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -79,7 +79,7 @@ process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
         dataTier = cms.untracked.string('NANOAOD'),
         filterName = cms.untracked.string('')
     ),
-    fileName = cms.untracked.string('file:DYm50_012j_nlo_ewparams_cp5.root'),
+    fileName = cms.untracked.string('file:DYm50_1j_nlo_mg273_ewfix_cp5.root'),
     outputCommands = process.NANOAODSIMEventContent.outputCommands
 )
 
@@ -110,8 +110,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
             'JetMatching:doFxFx = on', 
             'JetMatching:qCutME = 10.', 
             'JetMatching:nQmatch = 5', 
-            'JetMatching:nJetMax = 2', 
-            'TimeShower:mMaxGamma = 4.0'
+            'JetMatching:nJetMax = 2'
         ),
         pythia8CP5Settings = cms.vstring(
             'Tune:pp 14', 
@@ -170,7 +169,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/GenValidation/gridpacks/ewparams/dyellell012j_5f_NLO_FXFX_slc7_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
+    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/GenValidation/gridpacks/ewparams/dyellell1j_5f_NLO_FXFX_slc7_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
     nEvents = cms.untracked.uint32(20000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),

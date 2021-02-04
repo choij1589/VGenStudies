@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_ewparams_cp5_cff.py --fileout file:DYm50_012j_nlo_ewparams_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_ewparams_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 20000 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py --fileout file:DYm50_012j_nlo_mg273_ewfix_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_mg273_ewfix_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 20000 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -62,7 +62,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_ewparams_cp5_cff.py nevts:20000'),
+    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py nevts:20000'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -79,7 +79,7 @@ process.NANOAODSIMoutput = cms.OutputModule("NanoAODOutputModule",
         dataTier = cms.untracked.string('NANOAOD'),
         filterName = cms.untracked.string('')
     ),
-    fileName = cms.untracked.string('file:DYm50_012j_nlo_ewparams_cp5.root'),
+    fileName = cms.untracked.string('file:DYm50_012j_nlo_mg273_ewfix_cp5.root'),
     outputCommands = process.NANOAODSIMEventContent.outputCommands
 )
 
