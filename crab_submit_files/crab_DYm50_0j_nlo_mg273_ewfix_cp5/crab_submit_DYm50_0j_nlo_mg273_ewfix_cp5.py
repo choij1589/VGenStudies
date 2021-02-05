@@ -9,7 +9,7 @@ config.General.transferLogs = True
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.psetName = '../../configs/DYm50_0j_nlo_mg273_ewfix_cp5_cfg.py'
 config.JobType.allowUndistributedCMSSW = True
-#config.JobType.numCores = 1
+config.JobType.numCores = 1
 
 config.Data.outputPrimaryDataset = 'DYm50_0j_nlo_ewparams_cp5'
 config.Data.splitting = 'EventBased'
