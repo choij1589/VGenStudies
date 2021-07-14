@@ -13,8 +13,8 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.Data.outputPrimaryDataset = 'DYm50_012j_nlo_ewparams_cp5'
 config.Data.splitting = 'EventBased'
-config.Data.unitsPerJob = 8000 # num. of jobs to submit
-NJOBS = 800  # This is not a configuration parameter, but an auxiliary variable that we use in the next line.
+config.Data.unitsPerJob = 2000 # num. of jobs to submit
+NJOBS = 50  # This is not a configuration parameter, but an auxiliary variable that we use in the next line.
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
 config.Data.outLFNDirBase = '/store/user/choij/' 
 config.Data.publication = True

@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py --fileout file:DYm50_012j_nlo_mg273_ewfix_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_mg273_ewfix_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 20000 --no_exec
+# with command line options: Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py --fileout file:DYm50_012j_nlo_mg273_ewfix_cp5.root --mc --eventcontent NANOAODSIM --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN --python_filename configs/DYm50_012j_nlo_mg273_ewfix_cp5_cfg.py --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=999 -n 100 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -25,44 +25,19 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(20000),
-    output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
+    input = cms.untracked.int32(100)
 )
 
 # Input source
 process.source = cms.Source("EmptySource")
 
 process.options = cms.untracked.PSet(
-    FailPath = cms.untracked.vstring(),
-    IgnoreCompletely = cms.untracked.vstring(),
-    Rethrow = cms.untracked.vstring(),
-    SkipEvent = cms.untracked.vstring(),
-    allowUnscheduled = cms.obsolete.untracked.bool,
-    canDeleteEarly = cms.untracked.vstring(),
-    deleteNonConsumedUnscheduledModules = cms.untracked.bool(True),
-    emptyRunLumiMode = cms.obsolete.untracked.string,
-    eventSetup = cms.untracked.PSet(
-        forceNumberOfConcurrentIOVs = cms.untracked.PSet(
-            allowAnyLabel_=cms.required.untracked.uint32
-        ),
-        numberOfConcurrentIOVs = cms.untracked.uint32(1)
-    ),
-    fileMode = cms.untracked.string('FULLMERGE'),
-    forceEventSetupCacheClearOnNewRun = cms.untracked.bool(False),
-    makeTriggerResults = cms.obsolete.untracked.bool,
-    numberOfConcurrentLuminosityBlocks = cms.untracked.uint32(1),
-    numberOfConcurrentRuns = cms.untracked.uint32(1),
-    numberOfStreams = cms.untracked.uint32(0),
-    numberOfThreads = cms.untracked.uint32(1),
-    printDependencies = cms.untracked.bool(False),
-    sizeOfStackForThreadsInKB = cms.optional.untracked.uint32,
-    throwIfIllegalParameter = cms.untracked.bool(True),
-    wantSummary = cms.untracked.bool(False)
+
 )
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py nevts:20000'),
+    annotation = cms.untracked.string('Configuration/VGenStudies/python/DYm50_012j_nlo_mg273_ewfix_cp5_cff.py nevts:100'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -141,6 +116,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
             'Main:timesAllowErrors = 10000', 
             'Check:epTolErr = 0.01', 
             'Beams:setProductionScalesFromLHEF = off', 
+            'SLHA:keepSM = on', 
             'SLHA:minMassSM = 1000.', 
             'ParticleDecays:limitTau0 = on', 
             'ParticleDecays:tau0Max = 10', 
@@ -171,7 +147,7 @@ process.generator = cms.EDFilter("Pythia8HadronizerFilter",
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/GenValidation/gridpacks/ewparams/dyellell012j_5f_NLO_FXFX_slc7_amd64_gcc630_CMSSW_9_3_16_tarball.tar.xz'),
-    nEvents = cms.untracked.uint32(20000),
+    nEvents = cms.untracked.uint32(100),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
     scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh')
@@ -204,7 +180,6 @@ from PhysicsTools.NanoAOD.nanogen_cff import customizeNanoGEN
 process = customizeNanoGEN(process)
 
 # End of customisation functions
-
 
 # Customisation from command line
 

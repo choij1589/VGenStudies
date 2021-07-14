@@ -167,7 +167,7 @@ sg12
 I00
 sS'unitsPerJob'
 p63
-I8000
+I2000
 sg13
 S''
 sg14
@@ -206,7 +206,7 @@ S'DYm50_012j_nlo_ewparams_cp5'
 p75
 sg25
 Nsg69
-I6400000
+I100000
 sbsg29
 g3
 (g9
@@ -256,7 +256,7 @@ S'prod'
 p91
 sS'RequestName'
 p92
-V210204_032457:choij_crab_DYm50_012j_nlo_mg273_ewfix_cp5
+V210217_130442:choij_crab_DYm50_012j_nlo_mg273_ewfix_cp5
 p93
 sS'voRole'
 p94
